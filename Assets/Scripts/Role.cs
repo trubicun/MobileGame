@@ -1,4 +1,6 @@
-public abstract class Role
+using UnityEngine;
+
+public abstract class Role : MonoBehaviour
 {
     public abstract string GetName();
 }

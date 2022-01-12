@@ -8,10 +8,14 @@ public class RoleSelectionMenu : MonoBehaviour
         transform.GetChild(0).gameObject.SetActive(true);
     }
 
+    //TODO: Make menu more decoupling
+    //TODO: Start Game from other place
     public void SelectElectronics()
     {
-        var role = new RoleElectronics();
-        Debug.Log("Role Selected: " + role.GetName());
+        var role = RoleFactory.CreateRole(RoleType.Electronics);
+        
+        GameController.Instance.SetRoles(role);
+        GameController.Instance.StartGame();
         
         Quit();
     }
