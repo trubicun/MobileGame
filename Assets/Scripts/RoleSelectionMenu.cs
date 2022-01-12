@@ -12,9 +12,7 @@ public class RoleSelectionMenu : MonoBehaviour
     //TODO: Start Game from other place
     public void SelectElectronics()
     {
-        var role = RoleFactory.CreateRole(RoleType.Electronics);
-        
-        GameController.Instance.SetRoles(role);
+        GameController.Instance.SetRoles(RoleType.Electronics);
         GameController.Instance.StartGame();
         
         Quit();
