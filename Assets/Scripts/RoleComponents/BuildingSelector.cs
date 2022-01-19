@@ -38,8 +38,8 @@ public class BuildingSelector : MonoBehaviour, IRoleComponent
 
         return null;
     }
-    
-    void Update()
+
+    public Building TryToSelect()
     {
         var hit = Raycast();
         var selected = Select(hit);
@@ -49,8 +49,11 @@ public class BuildingSelector : MonoBehaviour, IRoleComponent
             if (building && building.Type == Building.BuildingType.Commercial)
             {
                 building.transform.localScale = building.transform.lossyScale * 1.3f;
+                return building;
                 //Building (Selectable Object) Selected!
             }
         }
+
+        return null;
     }
 }

@@ -2,30 +2,29 @@ using UnityEngine;
 
 public class PlayerRoleFactory: MonoBehaviour
 {
-    [SerializeField] PlayerRole playerRole;
+    [SerializeField] PlayerRoleElectronics roleElectronics;
+    [SerializeField] PlayerRoleUnknown roleUnknown;
 
     public PlayerRole CreateRole(RoleType roleType, Transform parent)
     {
-        
-        var role = Instantiate(playerRole, parent);
-
-        //TODO: Use something else inns
+        //TODO: Use something else instead of switch
         switch (roleType)
         {
             case RoleType.Electronics:
             {
+                var role = Instantiate(roleElectronics, parent);
                 role.Init(new RoleElectronics());
-                role.gameObject.AddComponent<BuildingSelector>();
-                break;
+                
+                return role;
             }
             default:
             {
-                //role.gameObject.name = roleType.GetName();
-                break;
+                var role = Instantiate(roleUnknown, parent);
+                role.Init(new RoleUnknown());
+                
+                return role;
             }
         }
-        
-        return role;
     }
 }
 
